@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GoWheels - Vos commandes
+{% endblock %}
+
+{% block body %}
+	{% if commandesCount < 1 %}
+		<div class="d-flex flex-column justify-content-center align-items-center min-vh">
+			<p class="h1">Vos commandes sont vides</p>
+			<p class="text-muted">Il semble que vous n’avez pas encore choisi de véhicule</p>
+			<a href="{{ path('vehicules') }}" class="btn btn-warning">Rechercher un véhicule</a>
+		</div>
+	{% else %}
+
+		<div class="container min-vh d-flex flex-column justify-content-center align-items-center py-5">
+			<div class="w-50 d-flex align-items-center my-5">
+				<a href="{{ path("my_account") }}" class="">
+					&lt;&lt; Retour</a>
+				<h1 class="text-center ms-5">Vos commandes</h1>
+			</div>
+			<div class="my-5">
+
+				<p>Nombre de commandes :
+					{{ commandesCount }}</p>
+				<table class="table table-responsive table-hover table-bordered text-center">
+					<thead class="table-dark">
+						<tr>
+							<th>Numéro de commande</th>
+							<th>Date de la commande</th>
+							<th>Véhicule commandé</th>
+							<th>Date de début de la location</th>
+							<th>Date de fin de la location</th>
+							<th>Tarif total</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for commande in commandes %}
+							<tr>
+								<td class="align-middle">{{ commande.id }}</td>
+								<td class="align-middle">{{ commande.dateEnregistrement|date('d/m/Y') }}</td>
+								<td class="align-middle">{{ commande.vehicule.titre }}</td>
+								<td class="align-middle">{{ commande.dateHeureDepart|date('d/m/Y') }}</td>
+								<td class="align-middle">{{ commande.dateHeureFin|date('d/m/Y') }}</td>
+								<td class="align-middle">{{ commande.prixTotal }}
+									€</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

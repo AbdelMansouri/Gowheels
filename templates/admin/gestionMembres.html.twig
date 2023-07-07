@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gestion des membres
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center my-5">Gestion des membres</h1>
+	<div class="container-fluid">
+		<div class="col-md-10 mx-auto">
+			<a href="{{ path('admin') }}" class="btn btn-danger my-2">Retour Back-office</a>
+			<table class="table table-responsive table-hover table-bordered text-center">
+				<thead class="table-dark">
+					<tr>
+						<th>#</th>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>Email</th>
+						<th>Civilite</th>
+						<th>Date d'Inscription</th>
+						<th>Rôle</th>
+						<th>Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for membre in membres %}
+						<tr>
+							<td class="align-middle">{{ membre.id }}</td>
+							<td class="align-middle">{{ membre.nom }}</td>
+							<td class="align-middle">{{ membre.prenom }}</td>
+							<td class="align-middle">{{ membre.email }}</td>
+							<td class="align-middle">{{ membre.civilite }}</td>
+							<td class="align-middle">{{ membre.dateEnregistrement|date('d/m/Y à H:i:s') }}</td>
+							<td class="align-middle">{{ membre.roles|join(', ') }}</td>
+							<td class="align-middle">
+								<a href="{{ path('admin_membres_update', {id: membre.id}) }}" class="btn btn-primary btn-sm mb-2 w-100">Modifier</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

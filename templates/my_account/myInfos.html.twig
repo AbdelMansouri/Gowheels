@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GoWheels - Vos informations
+{% endblock %}
+
+{% block body %}
+	<div class="container min-vh d-flex flex-column justify-content-center align-items-center py-5">
+		<div class="w-50 d-flex align-items-center my-5">
+			<a href="{{ path("my_account") }}" class="">
+				&lt;&lt; Retour</a>
+			<h1 class="text-center ms-5">Vos informations</h1>
+		</div>
+		<div class="card mb-5 w-50 border-0">
+			<div class="card-body">
+
+				<div class="form-group">
+					<fieldset disabled="">
+						<label class="form-label" for="disabledInput">Civilité</label>
+						<input class="form-control mb-3" id="disabledInput" type="text" placeholder="{{ membre.civilite }}" disabled="" wtx-context="301ECB78-DB8A-41E5-89E7-A4378BACBAF9">
+					</fieldset>
+				</div>
+
+				<div class="form-group">
+					<fieldset disabled="">
+						<label class="form-label" for="disabledInput">Prénom</label>
+						<input class="form-control mb-3" id="disabledInput" type="text" placeholder="{{ membre.prenom }}" disabled="" wtx-context="301ECB78-DB8A-41E5-89E7-A4378BACBAF9">
+					</fieldset>
+				</div>
+
+				<div class="form-group">
+					<fieldset disabled="">
+						<label class="form-label" for="disabledInput">Nom</label>
+						<input class="form-control mb-3" id="disabledInput" type="text" placeholder="{{ membre.nom }}" disabled="" wtx-context="301ECB78-DB8A-41E5-89E7-A4378BACBAF9">
+					</fieldset>
+				</div>
+
+				<div class="form-group">
+					<fieldset disabled="">
+						<label class="form-label" for="disabledInput">Email</label>
+						<input class="form-control mb-3" id="disabledInput" type="text" placeholder="{{ membre.email }}" disabled="" wtx-context="301ECB78-DB8A-41E5-89E7-A4378BACBAF9">
+					</fieldset>
+				</div>
+
+				<div class="form-group">
+					<fieldset disabled="">
+						<label class="form-label" for="disabledInput">Date d'inscription</label>
+						<input class="form-control" id="disabledInput" type="text" placeholder="{{ membre.dateEnregistrement|date('d/m/Y')}}" disabled="" wtx-context="301ECB78-DB8A-41E5-89E7-A4378BACBAF9">
+					</fieldset>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

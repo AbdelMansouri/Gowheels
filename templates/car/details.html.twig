@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	GoWheels - Détails du véhicule
+	{{ vehicule.titre }}
+{% endblock %}
+
+{% block body %}
+	<div class="container my-4" id="details-veh">
+		<div class="row row-cols-1 row-cols-md-2">
+
+
+			<div class="col-md-7 mt-5 ">
+				<div class="card border-0">
+					<div class="text-center">
+						<img src="{{ asset('asset/uploads/' ~ vehicule.photo) }}" class="img-fluid w-100 card-img-top" alt="..." style="max-height: 500px; object-fit: cover;">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5 mb-5">
+
+
+				<div class="card border-0 min-vh">
+					<div class="card-body">
+						<h1 class="card-text mb-3">{{ vehicule.titre }}</h1>
+						<p class="card-text">{{ vehicule.description }}</p>
+
+
+						{% if app.user %}
+							<div class="">
+								{{ form_start(form) }}
+								<div class="card-text mb-3 mt-5">
+									{{ form_label(form.date_heure_depart) }}
+									<div class="w-75" id="commande_date_heure_depart">{{ form_widget(form.date_heure_depart) }}</div>
+									{{ form_errors(form.date_heure_depart) }}
+									{{ form_help(form.date_heure_depart) }}
+								</div>
+								<div class="card-text mb-4">
+									{{ form_label(form.date_heure_fin) }}
+									<div class="w-75" id="commande_date_heure_fin">{{ form_widget(form.date_heure_fin) }}</div>
+									{{ form_errors(form.date_heure_fin) }}
+									{{ form_help(form.date_heure_fin) }}
+								</div>
+							</div>
+
+
+							<div class="card border-0 pe-5">
+								<h4 class="mb-3 mt-5">Résumé</h4>
+								<div class="d-flex m-0 p-0">
+									<small>Tarif journalier:</small>
+									<small class="text-body-secondary ms-auto" id="prix-journalier" data-prix-journalier="{{ vehicule.prixJournalier }}">
+										{{ vehicule.prixJournalier }}€</small>
+								</div>
+								<div class="d-flex m-0 p-0">
+									<small class"">Nombre de jours:</small>
+									<small class="text-body-secondary ms-auto" id="nombre-jours">0 j</small>
+								</div>
+								<hr class="m-0 mt-3">
+								<div class="d-flex my-2 p-0">
+									<p class="m-0 my-auto">Total:</p>
+									<p class="text-body-secondary ms-auto m-0 my-auto" id="prix-total">0 €</p>
+								</div>
+								<hr class="m-0 mb-3">
+								<button type="submit" class="btn btn-primary w-100">
+									Commander
+								</button>
+								{{ form_end(form) }}
+							</div>
+
+						{% else %}
+							<div class="card-text mb-5 mt-5">
+								<p class="mb-0">Pour commander ce véhicule merci de vous connecter</p>
+								<a href="{{ path("app_login") }}" class="btn btn-warning btn-sm mb-3">Se connecter</a>
+								<p class="mb-0">Pas encore inscrit(e) ?</p>
+								<a href="{{ path("app_register") }}" class="btn btn-primary btn-sm">Inscrivez-vous</a>
+							</div>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
