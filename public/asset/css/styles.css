@@ -1,0 +1,91 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto !important;
+  background-color: red !important;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+#home-banner {
+  background-image: url("/asset/img/audi.jpg");
+  min-height: 650px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  padding-top: 120px;
+}
+
+#home-banner h2,
+#home-banner p {
+  color: white;
+}
+
+#veh .imgF {
+  max-height: 150px;
+  object-fit: cover;
+}
+
+#veh .imgF:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+#details-veh #prix-total {
+  font-size: 1.6rem;
+}
+
+#details-veh #prix-journalier,
+#details-veh #nombre-jours,
+#details-veh #prix-total {
+  font-weight: bold;
+  color: black !important;
+}
+
+#footer li {
+  list-style-type: none;
+}
+
+#footer .smaller {
+  font-size: 0.6rem;
+  font-style: italic;
+}
+
+#footer h3,
+#footer h5,
+#footer p,
+#footer li {
+  color: white;
+}
+
+#footer h3 {
+  font-size: 2.2rem;
+}
+
+#footer h5 {
+  font-size: 1.4rem;
+}
+
+.min-vh {
+  min-height: calc(100vh - 460px);
+}
+
+.max-vw {
+  max-width: 100%;
+}
+
+.bg-diff {
+  background-color: rgb(233, 233, 233);
+}
