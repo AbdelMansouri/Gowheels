@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GoWheels - Nos Véhicules
+{% endblock %}
+{% block body %}
+	<section id="veh">
+		<h2 class="text-center my-5">Nos Véhicules</h2>
+		<div class="container">
+			<div class="row row-cols-1 row-cols-md-4 g-6">
+				{% for vehicule in vehicules %}
+					<div class="col my-5">
+						<div class="card h-100 border-0 shadow-none">
+							<a href="{{ path("vehicules_details", {id: vehicule.id}) }}">
+								<img src="{{ asset('asset/uploads/' ~ vehicule.photo) }}" class="card-img-top rounded-0 mb-3 img-fluid imgF" alt="...">
+							</a>
+							<h3 class="card-title m-0">{{ vehicule.titre }}</h3>
+							<div class="card-body d-flex flex-column p-0">
+								<small class="text-body-secondary mt-auto">À partir de
+									{{ vehicule.prixJournalier }}€ / jour</small>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

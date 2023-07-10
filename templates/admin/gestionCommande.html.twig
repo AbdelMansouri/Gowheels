@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gestion des commandes
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center my-5">Gestion des commandes</h1>
+	<div class="container-fluid">
+		<div class="mx-auto">
+			<a href="{{ path('admin') }}" class="btn btn-danger my-2">Retour Back-office</a>
+			<table class="table table-responsive table-hover table-bordered text-center">
+				<thead class="table-dark">
+					<tr>
+						<th>#</th>
+						<th>Email</th>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>Date de départ du véhicule</th>
+						<th>Date de retour du véhicule</th>
+						<th>Tarif total</th>
+						<th>Date de la commande</th>
+						<th>Véhicule commandé</th>
+						<th>Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for commande in commandes %}
+						<tr>
+							<td class="align-middle">{{ commande.id }}</td>
+							<td class="align-middle">{{ commande.membre.email }}</td>
+							<td class="align-middle">{{ commande.membre.nom }}</td>
+							<td class="align-middle">{{ commande.membre.prenom }}</td>
+							<td class="align-middle">{{ commande.dateHeureDepart|date('d/m/Y') }}</td>
+							<td class="align-middle">{{ commande.dateHeureFin|date('d/m/Y') }}</td>
+							<td class="align-middle">{{ commande.prixTotal }}€</td>
+							<td class="align-middle">{{ commande.dateEnregistrement|date('d/m/Y') }}</td>
+							<td class="align-middle">{{ commande.vehicule.titre }}</td>
+							<td class="align-middle">
+								<a href="{{ path('admin_commandes_update', {id: commande.id}) }}" class="btn btn-primary btn-sm mb-2 w-100">Modifier</a>
+								<a href="{{ path('admin_commandes_delete', {id: commande.id}) }}" class="btn btn-danger btn-sm w-100">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

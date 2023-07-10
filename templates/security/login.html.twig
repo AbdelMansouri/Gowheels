@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GoWheels - Connexion
+{% endblock %}
+
+{% block body %}
+	<div class="col-md-4 mx-auto my-5 min-vh">
+		<form method="post">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			{% if app.user %}
+				<div class="d-flex flex-column mb-3 justify-content-center align-items-center min-vh">
+					<p>Vous êtes identifié en tant que
+						{{ app.user.userIdentifier }}</p>
+					<div class="">
+						<a href="{{ path('accueil') }}" class="btn btn-primary">
+							Accueil</a>
+						<a href="{{ path('app_logout') }}" class="btn btn-danger">Deconnexion</a>
+					</div>
+				</div>
+			{% else %}
+
+				<h1 class="mb-5">Connexion</h1>
+				<label for="inputEmail">Adresse email</label>
+				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+				<label for="inputPassword" class="mt-3">Mot de passe</label>
+				<input type="password" name="password" id="inputPassword" class="form-control mb-2" autocomplete="current-password" required>
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+				<div class="d-flex align-items-center justify-content-between">
+					<button class="btn btn-primary my-4" type="submit">
+						S'identifier
+					</button>
+					<div class="d-flex align-items-center">
+						<p class="m-0 me-3">Pas encore inscrit(e) ?</p>
+						<a href="{{ path("app_register") }}" class="btn btn-warning btn-sm">Inscrivez-vous</a>
+					</div>
+				</div>
+			{% endif %}
+		</form>
+	</div>
+{% endblock %}

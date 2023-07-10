@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gestion des véhicules
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center my-5">Gestion des véhicules</h1>
+	<div class="container-fluid">
+		<div class="col-md-10 mx-auto">
+			<a href="{{ path('admin_vehicules_new') }}" class="btn btn-primary my-2">Ajouter un Véhicule</a>
+			<a href="{{ path('admin') }}" class="btn btn-danger">Retour Back-office</a>
+			<div class="card my-2 p-3 bg-diff small">
+				<p class="my-0 fw-bold">
+					Informations importantes :</p>
+				<p class="my-0">- Actuellement, il n'est pas possible de supprimer un véhicule qui a une commande associée. Si vous êtes redirigé vers la liste des commandes lors de la suppression d'un véhicule, cela signifie qu'il y a une commande liée à ce véhicule. Par conséquent, vous devrez d'abord supprimer les commandes qui font référence à ce véhicule avant de pouvoir le supprimer.</p>
+				<p class="my-0">- Lors de la mis à jour des informations d'un véhicule il est nécessaire d'upload à nouveau l'image associée au véhicule, sinon les informations ne seront pas sauvegardées. Ceci malgré le
+					<span class="bg-black text-warning">'required' => false</span>, 🤣</p>
+			</div>
+			{% if errorMessage is defined %}
+				<div class="alert alert-danger">{{ errorMessage }}</div>
+			{% endif %}
+			<table class="table table-responsive table-hover table-bordered text-center">
+				<thead class="table-dark">
+					<tr>
+						<th>#</th>
+						<th>Photo</th>
+						<th>Titre</th>
+						<th>Marque</th>
+						<th>Modele</th>
+						<th>Description</th>
+						<th>Tarif journalier</th>
+						<th>Date d'acquisition</th>
+						<th>Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for vehicule in vehicules %}
+						<tr>
+							<td class="align-middle">{{ vehicule.id }}</td>
+							<td class="align-middle"><img src="{{ asset('asset/uploads/' ~ vehicule.photo) }}" alt="" width="70"></td>
+							<td class="align-middle">{{ vehicule.titre }}</td>
+							<td class="align-middle">{{ vehicule.marque }}</td>
+							<td class="align-middle">{{ vehicule.modele }}</td>
+							<td class="align-middle">{{ vehicule.description|slice(0, 20) }}</td>
+							<td class="align-middle">{{ vehicule.prixJournalier }}€</td>
+							<td class="align-middle">{{ vehicule.dateEnregistrement|date('d/m/Y à H:i:s') }}</td>
+							<td class="align-middle">
+								<a href="{{ path('admin_vehicules_update', {id: vehicule.id}) }}" class="btn btn-primary btn-sm mb-2 w-100">Modifier</a>
+								<a href="{{ path('admin_vehicules_delete', {id: vehicule.id}) }}" class="btn btn-danger btn-sm w-100">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

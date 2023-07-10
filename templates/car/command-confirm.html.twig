@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}GoWheels - Confirmation de commande
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex flex-column justify-content-center align-items-center min-vh py-5 my-5">
+		<p class="h1">Nous vous confirmons que votre commande a bien été réalisé</p>
+		<p class="text-muted">Vous pouvez suivre vos commandes depuis votre espace personnel, rubrique mes commandes, ou en cliquant sur ce boutton ;</p>
+		<a href="{{ path('my_account_commandes') }}" class="btn btn-primary btn-sm">Mes commandes</a>
+	</div>
+{% endblock %}

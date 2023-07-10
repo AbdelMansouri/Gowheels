@@ -1,0 +1,75 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{% if editMode %}
+		Modifier un véhicule
+	{% else %}
+		Ajouter un véhicule
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center my-4">
+		{% if editMode %}
+			Modifier un véhicule
+		{% else %}
+			Ajouter un véhicule
+		{% endif %}
+
+	</h1>
+
+	<div class="container">
+		<div class="col-md-8 mx-auto">
+			{{ form_start(form,{
+			attr: {
+				novalidate: 'novalidate'
+			}
+		}) }}
+
+			{{ form_row(form.titre, {
+        label: 'Titre',
+        attr: {
+          placeholder: "Titre du véhicule"
+        }
+      }) }}
+
+			{{ form_row(form.marque, {
+        label: 'Marque',
+        attr: {
+          placeholder: "Marque du véhicule"
+        }
+      }) }}
+
+			{{ form_row(form.modele, {
+        label: 'Modèle',
+        attr: {
+          placeholder: "Modèle du véhicule"
+        }
+      }) }}
+
+			{{ form_row(form.description, {
+        label: 'Description',
+        attr: {
+          placeholder: "Description du véhicule (motorisation...)"
+        }
+      }) }}
+
+			{{ form_row(form.photo) }}
+
+
+			{{ form_label(form.prix_journalier,'Tarif Journalier') }}
+			<div class="input-group w-25">
+				{{ form_widget(form.prix_journalier) }}
+				<span class="input-group-text">€</span>
+			</div>
+      <div class="mb-4">
+			{{ form_errors(form.prix_journalier) }}
+			{{ form_help(form.prix_journalier) }}
+      </div>
+
+			<button type="submit" class="btn btn-primary">Envoyer</button>
+			<a href="{{ path('admin_gestion_vehicules')}}" class="btn btn-danger">Retour</a>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}

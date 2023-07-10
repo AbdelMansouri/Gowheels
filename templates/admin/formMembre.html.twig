@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Modifier un membre
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center my-4">Modifier un membre</h1>
+	<div class="container">
+		<div class="col-md-8 mx-auto">
+
+			{{ form_start(form) }}
+
+			{{ form_row(form.civilite) }}
+
+			{{ form_row(form.nom) }}
+
+			{{ form_row(form.prenom) }}
+
+			{{ form_row(form.email) }}
+
+			{{ form_row(form.roles) }}
+
+			<button type="submit" class="btn btn-primary">Envoyer</button>
+			<a href="{{ path('admin_gestion_membres')}}" class="btn btn-danger">Retour</a>
+
+			{{ form_end(form) }}
+
+		</div>
+	</div>
+{% endblock %}
