@@ -8,8 +8,9 @@ This is the GoWheels project developed with Symfony. Follow the instructions bel
 
 Before you begin, ensure you have met the following requirements:
 - You have a local server environment like WAMP, LAMP, or MAMP installed.
-- You have PHP 7.4 or newer.
+- You have PHP 8.1 or newer.
 - You have Composer installed.
+- You have Symfony CLI for managing the Symfony application.
 
 ## 🚀 Installation
 
@@ -58,7 +59,7 @@ php bin/console doctrine:migrations:migrate
 You can start the local development server by running (make sure your local server is ready) :
 ```
 
-php bin/console server:start
+symfony server:start
 
 ```
 
@@ -82,8 +83,9 @@ Ceci est le projet GoWheels développé avec Symfony. Suivez les instructions ci
 
 Avant de commencer, assurez-vous de répondre aux exigences suivantes :
 - Vous avez un environnement serveur local tel que WAMP, LAMP ou MAMP installé.
-- Vous disposez de PHP 7.4 ou plus récent.
+- Vous disposez de PHP 8.1 ou plus récent.
 - Vous avez Composer installé.
+- Vous disposez de Symfony CLI pour gérer l’application Symfony.
 
 ## 🚀 Installation
 
@@ -132,7 +134,7 @@ php bin/console doctrine:migrations:migrate
 Vous pouvez démarrer le serveur de développement local en exécutant (assurez-vous que votre serveur local est prêt) :
 ```
 
-php bin/console server:start
+symfony server:start
 
 ```
 
