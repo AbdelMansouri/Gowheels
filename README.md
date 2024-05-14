@@ -1,6 +1,9 @@
-[Cliquez ici pour accéder à la version française](#projet-gowheels-fr)
+## 📖 Table of Contents
+- Project Overview ➡️ [GoWheels](https://gowheels.abdel-mansouri.com/)
+- [English Version](#gowheels-project--us-)
+- [Version Française](#projet-gowheels--fr-)
 
-# GoWheels Project (en)
+# GoWheels Project ( :us: )
 
 This is the GoWheels project developed with Symfony. Follow the instructions below to set up and run the project on your local machine for development and testing purposes.
 
@@ -73,9 +76,7 @@ php bin/console doctrine:fixtures:load
 
 ```
 
-[Click here for the English version](#gowheels-project-en)
-
-# Projet GoWheels (fr)
+# Projet GoWheels ( :fr: )
 
 Ceci est le projet GoWheels développé avec Symfony. Suivez les instructions ci-dessous pour configurer et exécuter le projet sur votre machine locale à des fins de développement et de test.
 
